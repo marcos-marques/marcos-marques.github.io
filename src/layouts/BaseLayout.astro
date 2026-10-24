@@ -1,0 +1,52 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Marcos Marques — Engenheiro de Software",
+  description = "Portfolio profissional de Marcos Marques.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="bg-white text-slate-800 font-sans antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-2 focus:bg-primary focus:text-white">
+      Pular para o conteúdo
+    </a>
+    <nav class="sticky top-0 z-10 bg-white/90 backdrop-blur border-b border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 py-3 flex gap-6 text-sm font-medium">
+        <a href="#hero"       class="hover:text-primary transition-colors">Início</a>
+        <a href="#experience" class="hover:text-primary transition-colors">Experiência</a>
+        <a href="#skills"     class="hover:text-primary transition-colors">Skills</a>
+        <a href="#projects"   class="hover:text-primary transition-colors">Projetos</a>
+        <a href="#contact"    class="hover:text-primary transition-colors">Contato</a>
+      </div>
+    </nav>
+    <main id="main" class="max-w-4xl mx-auto px-4">
+      <slot />
+    </main>
+    <footer class="max-w-4xl mx-auto px-4 py-8 mt-16 border-t border-slate-200 text-sm text-slate-500 text-center">
+      Construído com <a href="https://astro.build" class="underline hover:text-primary">Astro</a>
+      &amp; Tailwind CSS
+    </footer>
+  </body>
+</html>

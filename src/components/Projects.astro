@@ -1,0 +1,30 @@
+---
+import { projects } from "../data/projects";
+---
+
+<section id="projects" class="py-16">
+  <h2 class="text-2xl font-bold mb-8">Projetos</h2>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {projects.map((project) => (
+      <article class="border border-slate-200 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
+        <h3 class="font-semibold text-slate-800">
+          <a
+            href={project.url}
+            class="hover:text-primary transition-colors"
+            rel="noopener noreferrer"
+          >
+            {project.name}
+          </a>
+        </h3>
+        <p class="text-sm text-slate-500 leading-relaxed flex-1">{project.description}</p>
+        <ul class="flex flex-wrap gap-1">
+          {project.tags.map((tag) => (
+            <li class="px-2 py-0.5 rounded bg-primary/10 text-primary text-xs font-medium">
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import { skills } from "../data/skills";
+---
+
+<section id="skills" class="py-16">
+  <h2 class="text-2xl font-bold mb-8">Skills</h2>
+  <div class="grid gap-6 sm:grid-cols-2">
+    {Object.entries(skills).map(([category, items]) => (
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-600 mb-3">
+          {category}
+        </h3>
+        <ul class="flex flex-wrap gap-2">
+          {items.map((skill) => (
+            <li class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-sm font-medium">
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
