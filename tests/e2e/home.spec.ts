@@ -11,6 +11,13 @@ test.describe("home page", () => {
     }
   });
 
+  test("footer exibe o ano atual", async ({ page }) => {
+    await page.goto("/");
+    const footer = page.getByRole("contentinfo");
+    await expect(footer).toBeVisible();
+    await expect(footer).toContainText(String(new Date().getFullYear()));
+  });
+
   test("acessibilidade: sem violações axe", async ({ page }) => {
     await page.goto("/");
     const results = await new AxeBuilder({ page }).analyze();
